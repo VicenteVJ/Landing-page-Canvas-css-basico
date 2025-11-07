@@ -1,0 +1,244 @@
+:root {
+  /* Paleta Vellarum */
+  --black: #000000;
+  --blue-deep: #0762c8;   /* Pantone 2387 C */
+  --blue: #0090da;        /* Pantone 2193 C */
+  --cyan: #00c2df;        /* Pantone 311 C */
+  --blue-light: #74d1ea;  /* Pantone Blue 0821 C */
+
+  --text: #ffffff;
+  --text-muted: rgba(237, 243, 255, 0.78);
+  --card: rgba(0, 0, 0, 0.45);
+  --radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--black);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Canvas full */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #000;
+}
+
+/* glow azul por cima */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0, 194, 223, 0.25), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(7, 98, 200, 0.25), transparent 40%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* HEADER */
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.1rem 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(116, 209, 234, 0.08);
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02rem;
+}
+
+.logo span {
+  color: var(--cyan);
+}
+
+nav {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.btn-nav {
+  border: 1px solid rgba(0, 194, 223, 0.6);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.hero-content {
+  max-width: 690px;
+  margin-top: 3rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  color: var(--cyan);
+  text-shadow: 0 0 18px rgba(0, 194, 223, 0.6);
+}
+
+.hero p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--blue-deep), var(--cyan));
+  color: #000;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(0, 194, 223, 0.25);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(116, 209, 234, 0.4);
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* SECTIONS */
+.section {
+  padding: 5rem 5vw;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.4rem;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 194, 223, 0.12);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: 0.25s;
+}
+
+.card:hover {
+  border-color: rgba(0, 194, 223, 0.4);
+  box-shadow: 0 6px 25px rgba(0, 194, 223, 0.08);
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* FORM */
+.form {
+  max-width: 460px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.form input,
+.form textarea {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(114, 209, 234, 0.1);
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  color: #fff;
+}
+
+.form button {
+  background: linear-gradient(120deg, var(--blue), var(--cyan));
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #000;
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  color: rgba(237, 243, 255, 0.55);
+  font-size: 0.8rem;
+}
+
+/* MOBILE */
+@media (max-width: 720px) {
+  .hero {
+    padding-top: 4rem;
+  }
+  .section {
+    padding-inline: 1.3rem;
+  }
+  nav {
+    gap: 1rem;
+  }
+}
